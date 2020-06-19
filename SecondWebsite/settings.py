@@ -139,5 +139,3 @@ EMAIL_HOST_PASSWORD = 'yebes!123'
 EMAIL_USE_TLS = True
 
 django_heroku.settings(locals())
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
