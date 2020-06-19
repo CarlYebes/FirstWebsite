@@ -24,9 +24,9 @@ sys.path.append(BASE_DIR)
 SECRET_KEY = '-18-^g#sxt6=s#6j^bsmes*f@1zda@@$)g*zpw1&29!3v)=jmk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*', '127.0.0.1', 'shielded-refuge-50897.herokuapp.com', '0.0.0.0:5000']
+ALLOWED_HOSTS = ['*', 'shielded-refuge-50897.herokuapp.com']
 
 
 # Application definition
@@ -139,3 +139,5 @@ EMAIL_HOST_PASSWORD = 'yebes!123'
 EMAIL_USE_TLS = True
 
 django_heroku.settings(locals())
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
