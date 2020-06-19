@@ -1,1 +1,6 @@
-web: python manage.py runserver 0.0.0.0:5000
+import os
+import sys
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+
+web: gunicorn SecondWebsite.wsgi --log-file -
