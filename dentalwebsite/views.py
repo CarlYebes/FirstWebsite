@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
+from .models import Form
 # Create your views here.
 
 
@@ -13,6 +14,8 @@ def index(request):
         time = request.POST['your-time']
         message = request.POST['your-message']
 
+        # database
+        Form.objects.create(name=name,number=number,email=email)
         context = {
             "name": name,
             "number": number,
@@ -31,7 +34,7 @@ def index(request):
             Message: {message}
         '''
 
-        send_mail(f"From {name}", messages, email, ['yebes77@gmail.com'])
+        #send_mail(f"From {name}", messages, email, ['yebes77@gmail.com'])
         return render(request, 'index.html', context)
     else:
         return render(request, 'index.html')

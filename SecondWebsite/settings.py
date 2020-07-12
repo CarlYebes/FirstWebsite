@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import dj_database_url
+
+from dj_database_url import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-18-^g#sxt6=s#6j^bsmes*f@1zda@@$)g*zpw1&29!3v)=jmk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,12 +79,8 @@ WSGI_APPLICATION = 'SecondWebsite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
 }
-
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -125,7 +124,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
     ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'templates')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -133,9 +132,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'yebes77@gmail.com'
-EMAIL_HOST_PASSWORD = 'yebes!123'
+EMAIL_HOST_PASSWORD = 'Yebes!123'
 EMAIL_USE_TLS = True
 
 django_heroku.settings(locals())
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
