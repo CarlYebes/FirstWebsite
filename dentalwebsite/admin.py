@@ -5,5 +5,4 @@ from .models import *
 admin.site.register(Form)
 admin.site.register(Form_one)
 admin.site.register(Form_two)
-admin.site.register(Form_three)
 admin.site.register(Form_four)
