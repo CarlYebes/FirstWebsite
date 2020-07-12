@@ -34,7 +34,7 @@ def index(request):
             Message: {message}
         '''
 
-        #send_mail(f"From {name}", messages, email, ['yebes77@gmail.com'])
+        send_mail(f"From {name}", messages, email, ['yebes77@gmail.com'])
         return render(request, 'index.html', context)
     else:
         return render(request, 'index.html')
